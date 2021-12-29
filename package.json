@@ -14,8 +14,8 @@
       "require": "./dist-cjs/index.js"
     },
     "./jsx-runtime": {
-      "import": "./dist-esm/index.js",
-      "require": "./dist-cjs/index.js"
+      "import": "./dist-esm/jsx-runtime/index.js",
+      "require": "./dist-cjs/jsx-runtime/index.js"
     }
   },
   "scripts": {
