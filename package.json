@@ -1,0 +1,69 @@
+{
+  "name": "static-jsx",
+  "description": "A simple static renderer for JSX.",
+  "files": [
+    "dist-cjs",
+    "dist-esm"
+  ],
+  "main": "./dist-cjs/index.js",
+  "module": "./dist-esm/index.js",
+  "types": "./dist-esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist-esm/index.js",
+      "require": "./dist-cjs/index.js"
+    },
+    "./jsx-runtime": {
+      "import": "./dist-esm/index.js",
+      "require": "./dist-cjs/index.js"
+    }
+  },
+  "scripts": {
+    "build": "run-p build:*",
+    "build:cjs": "tsc -p tsconfig.build.json --outDir dist-cjs --module commonjs",
+    "build:esm": "tsc -p tsconfig.build.json --outDir dist-esm --module esnext",
+    "clean": "rimraf dist-cjs dist-esm",
+    "fmt": "prettier --write .",
+    "prepack": "npm run build",
+    "test": "run-p test:*",
+    "test:check": "tsc --noEmit",
+    "test:fmt": "prettier --check .",
+    "test:lint": "eslint --ext .js,.cjs,.mjs,.ts .",
+    "test:unit": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianprime0509/static-jsx.git"
+  },
+  "keywords": [
+    "jsx",
+    "static",
+    "react"
+  ],
+  "author": {
+    "name": "Ian Johnson",
+    "email": "ian@ianjohnson.dev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ianprime0509/static-jsx/issues"
+  },
+  "homepage": "https://github.com/ianprime0509/static-jsx#readme",
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-tsdoc": "^0.2.14",
+    "jest": "^27.4.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.5.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^18.0.1",
+    "ts-jest": "^27.1.2",
+    "ts-jest-resolver": "^2.0.0",
+    "typescript": "^4.5.4"
+  }
+}
