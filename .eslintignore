@@ -1,4 +1,4 @@
 .vscode
-dist-esm
-dist-cjs
+dist
+examples
 node_modules
