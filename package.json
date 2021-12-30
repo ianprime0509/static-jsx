@@ -2,27 +2,17 @@
   "name": "static-jsx",
   "description": "A simple static renderer for JSX.",
   "files": [
-    "dist-cjs",
-    "dist-esm"
+    "dist"
   ],
-  "main": "./dist-cjs/index.js",
-  "module": "./dist-esm/index.js",
-  "types": "./dist-esm/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist-esm/index.js",
-      "require": "./dist-cjs/index.js"
-    },
-    "./jsx-runtime": {
-      "import": "./dist-esm/jsx-runtime/index.js",
-      "require": "./dist-cjs/jsx-runtime/index.js"
-    }
+    ".": "./dist/index.js",
+    "./jsx-runtime": "./dist/jsx-runtime/index.js"
   },
   "scripts": {
-    "build": "run-p build:*",
-    "build:cjs": "tsc -p tsconfig.build.json --outDir dist-cjs --module commonjs",
-    "build:esm": "tsc -p tsconfig.build.json --outDir dist-esm --module esnext",
-    "clean": "rimraf dist-cjs dist-esm",
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rimraf dist",
     "fmt": "prettier --write .",
     "prepack": "npm run build",
     "test": "run-p test:*",
