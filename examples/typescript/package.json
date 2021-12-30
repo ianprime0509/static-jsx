@@ -1,0 +1,21 @@
+{
+  "name": "static-jsx-example-typescript",
+  "license": "MIT",
+  "module": "dist/index.js",
+  "scripts": {
+    "build": "run-s build:code build:site",
+    "build:code": "tsc",
+    "build:site": "node dist/index.js site",
+    "clean": "rimraf dist site",
+    "test": "run-s clean build test:verify",
+    "test:verify": "node ../verify-example.mjs ."
+  },
+  "dependencies": {
+    "static-jsx": "file:../.."
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  }
+}

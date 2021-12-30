@@ -10,6 +10,10 @@ React or similar libraries such as [Preact](https://preactjs.com/) and
 
 ## Usage
 
+There are example projects under the `examples` directory corresponding to
+various ecosystems. These example projects are tested for correct functionality
+using `npm run test:examples`, which is part of `npm test`.
+
 The preface to this section gives a general overview of the API surface and
 supported functionality. For more targeted guidance for particular frameworks,
 see the subsections below.

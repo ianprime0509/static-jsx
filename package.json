@@ -18,6 +18,9 @@
     "fmt": "prettier --write .",
     "prepack": "npm run build",
     "test": "run-p test:*",
+    "test:examples": "run-p test:examples:*",
+    "test:examples:babel": "cd examples/babel && npm ci && npm test",
+    "test:examples:typescript": "cd examples/typescript && npm ci && npm test",
     "test:fmt": "prettier --check .",
     "test:lint": "eslint --ext .js,.cjs,.mjs,.ts .",
     "test:unit": "jest"
