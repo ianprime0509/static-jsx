@@ -1,10 +1,11 @@
 {
   "name": "static-jsx",
+  "version": "0.0.0",
   "description": "A simple static renderer for JSX.",
   "files": [
-    "./index.js",
-    "./index.d.ts",
-    "./jsx-runtime"
+    "index.js",
+    "index.d.ts",
+    "jsx-runtime"
   ],
   "main": "./index.js",
   "types": "./index.d.ts",
