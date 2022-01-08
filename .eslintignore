@@ -1,7 +1,2 @@
-.vscode
 examples
-node_modules
-
-/index.js
-/index.d.ts
-/jsx-runtime
+types

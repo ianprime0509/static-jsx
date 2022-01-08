@@ -3,7 +3,4 @@ dist
 node_modules
 site
 site-expect
-
-/index.js
-/index.d.ts
-/jsx-runtime
+types

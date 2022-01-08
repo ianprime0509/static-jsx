@@ -2,13 +2,13 @@
   "name": "static-jsx-example-babel",
   "license": "MIT",
   "type": "module",
-  "module": "dist/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "build": "run-s build:code build:site",
+    "build": "run-s build:clean build:code build:site",
+    "build:clean": "rimraf dist site",
     "build:code": "babel src -d dist",
     "build:site": "node dist/index.js site",
-    "clean": "rimraf dist site",
-    "test": "run-s clean build test:verify",
+    "test": "run-s build test:verify",
     "test:verify": "node ../verify-example.mjs ."
   },
   "dependencies": {

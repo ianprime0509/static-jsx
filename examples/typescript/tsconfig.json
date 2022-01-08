@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "esnext",
     "rootDir": "./src",
     "outDir": "./dist",
+    "moduleResolution": "node",
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "jsxImportSource": "static-jsx"

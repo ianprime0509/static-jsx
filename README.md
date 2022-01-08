@@ -149,6 +149,10 @@ From here, you will need to set up your transpiler. The automatic JSX transform
 is recommended, since it avoids manual imports, but either the classic or
 automatic JSX transform may be used.
 
+Note: this package is
+[ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c),
+so it cannot be used with `require`.
+
 #### Babel
 
 You can use
@@ -214,6 +218,22 @@ your project:
 
 // Your JSX/TSX here
 ```
+
+## Developer setup
+
+To install dependencies and run the project tests, run the following commands in
+the project directory:
+
+```shell
+npm install
+npm run build
+npm test
+```
+
+Note that running the tests requires Node.js 16 or higher, due to use of the
+experimental loader API which was changed in Node.js 16. This does not affect
+_using_ the library in lower versions of Node.js, which will work with any
+version that supports ES modules.
 
 ## License
 
