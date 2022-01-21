@@ -9,21 +9,21 @@
   ],
   "type": "module",
   "main": "index.js",
-  "types": "types/index.d.ts",
+  "types": "index.d.ts",
   "exports": {
     ".": {
-      "import": "./index.js",
-      "types": "./types/index.d.ts"
+      "types": "./index.d.ts",
+      "import": "./index.js"
     },
     "./jsx-runtime": {
-      "import": "./jsx-runtime/index.js",
-      "types": "./types/jsx-runtime/index.d.ts"
+      "types": "./index.d.ts",
+      "import": "./index.js"
     }
   },
   "scripts": {
     "build": "run-s build:clean build:types build:append-jsx-globals",
-    "build:append-jsx-globals": "node util/append-jsx-globals.js types/index.d.ts",
-    "build:clean": "rimraf types",
+    "build:append-jsx-globals": "node util/append-jsx-globals.js index.d.ts",
+    "build:clean": "rimraf index.d.ts",
     "build:types": "tsc",
     "fmt": "prettier --write .",
     "prepack": "npm run build",

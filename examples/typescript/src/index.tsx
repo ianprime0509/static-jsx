@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 
-import { type Component, RawHtml } from "static-jsx";
+import { type Component, Fragment, RawHtml, h } from "static-jsx";
 
 import page1 from "./page-1.js";
 import page2 from "./page-2.js";

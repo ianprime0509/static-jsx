@@ -1,6 +1,7 @@
 {
   "name": "static-jsx-example-typescript",
   "license": "MIT",
+  "private": true,
   "type": "module",
   "main": "dist/index.js",
   "scripts": {

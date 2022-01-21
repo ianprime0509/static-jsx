@@ -55,7 +55,7 @@ const voidElements = new Set([
  *
  * @template {Record<string, unknown>} P
  * @param {string | Component<P>} type the type of the component to render
- * @param {Omit<P, "children">} props the component's props
+ * @param {Omit<P, "children"> | null | undefined} props the component's props
  * @param {unknown[]} children the component's children
  * @returns {RawHtml} the rendered component as raw HTML
  */
@@ -64,13 +64,31 @@ export function h(type, props, ...children) {
     // @ts-expect-error not guaranteed to be assignable to P due to added children
     return type({ ...props, children });
   } else if (voidElements.has(type)) {
-    return new RawHtml(`<${type}${toAttributes(props)}/>`);
+    return new RawHtml(`<${type}${toAttributes(props ?? {})}/>`);
   } else {
     return new RawHtml(
-      `<${type}${toAttributes(props)}>${render(children).html}</${type}>`
+      `<${type}${toAttributes(props ?? {})}>${render(children).html}</${type}>`
     );
   }
 }
+
+/**
+ * Renders a component to raw HTML (automatic JSX runtime).
+ *
+ * @template {{}} P
+ * @param {string | Component<P>} type the type of the
+ * component to render
+ * @param {P & { children?: unknown }} props the component's props, including
+ * children
+ * @returns {RawHtml} the rendered component as raw HTML
+ */
+export function jsx(type, props) {
+  const { children, ...rest } = props;
+  const childrenArray = Array.isArray(children) ? children : [children];
+  return h(type, rest, ...childrenArray);
+}
+
+export { jsx as jsxs, jsx as jsxDev };
 
 /**
  * Renders some value to raw HTML.
