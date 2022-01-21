@@ -1,3 +1,5 @@
+import { h } from "static-jsx";
+
 import { type Page } from "./index.js";
 
 const page: Page = {

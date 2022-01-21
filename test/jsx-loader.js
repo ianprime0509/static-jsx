@@ -14,7 +14,7 @@ export async function resolve(specifier, context, defaultResolve) {
 
   if (specifier === "static-jsx/jsx-runtime") {
     return {
-      url: new URL("jsx-runtime/index.js", baseURL).href,
+      url: new URL("index.js", baseURL).href,
     };
   }
 

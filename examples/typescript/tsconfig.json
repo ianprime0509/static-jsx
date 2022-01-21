@@ -3,10 +3,12 @@
     "module": "esnext",
     "rootDir": "./src",
     "outDir": "./dist",
-    "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "static-jsx"
+    "moduleResolution": "node",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "strict": true
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

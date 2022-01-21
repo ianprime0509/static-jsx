@@ -151,7 +151,12 @@ automatic JSX transform may be used.
 
 Note: this package is
 [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c),
-so it cannot be used with `require`.
+so it cannot be used with `require`. Additionally, the automatic JSX transform,
+which will implicitly import `static-jsx/jsx-runtime`, relies on support for the
+`exports` field in `package.json` to resolve this module. This causes issues for
+certain tools (notably, TypeScript) which do not currently understand this
+field. The classic JSX transform can be used in this case, at the cost of manual
+imports in JSX files.
 
 #### Babel
 
@@ -173,9 +178,27 @@ You can use
 }
 ```
 
+See `examples/babel` for an example.
+
 #### TypeScript
 
 You can configure JSX in your `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
+  }
+}
+```
+
+See `examples/typescript` for an example.
+
+On nightly versions of TypeScript, using the `nodenext` module setting, you can
+use the automatic JSX transform to avoid having to import `h` and `Fragment`
+manually:
 
 ```json
 {
@@ -185,6 +208,11 @@ You can configure JSX in your `tsconfig.json`:
   }
 }
 ```
+
+The reason why this only works on nightly versions of TypeScript is because the
+automatic JSX runtime is imported as `static-jsx/jsx-runtime`, which is only
+exposed using the `exports` field in `package.json`, and only the `nodenext`
+module option understands the `exports` field.
 
 ### Deno
 
@@ -201,7 +229,7 @@ file (e.g. `deno.json`):
 {
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "https://esm.sh/static-jsx"
+    "jsxImportSource": "https://esm.sh/static-jsx@alpha"
   }
 }
 ```
@@ -214,7 +242,7 @@ Another way is to use the `jsxImportSource` pragma comment in each JSX file in
 your project:
 
 ```jsx
-/** @jsxImportSource https://esm.sh/static-jsx */
+/** @jsxImportSource https://esm.sh/static-jsx@alpha */
 
 // Your JSX/TSX here
 ```
