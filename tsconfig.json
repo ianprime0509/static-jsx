@@ -1,23 +1,13 @@
 {
   "compilerOptions": {
-    "rootDir": ".",
-    "outDir": ".",
     "target": "esnext",
     "module": "esnext",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "checkJs": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "jsxImportSource": "."
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "strict": true
   },
-  "files": ["./index.js"]
+  "include": ["index.js", "test/*.js"]
 }
