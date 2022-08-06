@@ -11,13 +11,14 @@
   "main": "index.js",
   "types": "index.d.ts",
   "exports": {
+    "./package.json": "./package.json",
     ".": {
       "types": "./index.d.ts",
-      "import": "./index.js"
+      "default": "./index.js"
     },
     "./jsx-runtime": {
       "types": "./index.d.ts",
-      "import": "./index.js"
+      "default": "./index.js"
     }
   },
   "scripts": {
