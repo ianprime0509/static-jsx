@@ -20,6 +20,7 @@ const extensionsRegex = /\.jsx$/;
  *   parentURL?: string,
  * }} ResolveContext
  * @typedef {{
+ *   shortCircuit?: boolean,
  *   format?: ModuleFormat | null,
  *   url: string,
  * }} ResolvedModule
@@ -35,12 +36,14 @@ export async function resolve(specifier, context, defaultResolve) {
 
   if (specifier === "static-jsx/jsx-runtime") {
     return {
+      shortCircuit: true,
       url: new URL("index.js", baseURL).href,
     };
   }
 
   if (extensionsRegex.test(specifier)) {
     return {
+      shortCircuit: true,
       url: new URL(specifier, parentURL).href,
     };
   }
@@ -54,6 +57,7 @@ export async function resolve(specifier, context, defaultResolve) {
  *   importAssertions?: {},
  * }} LoadContext
  * @typedef {{
+ *   shortCircuit?: boolean,
  *   format: ModuleFormat,
  *   source: string | ArrayBuffer | Uint8Array,
  * }} LoadedModule
@@ -90,6 +94,7 @@ export async function load(url, context, defaultLoad) {
       throw new Error(`Failed to transform code from ${url}`);
     }
     return {
+      shortCircuit: true,
       format: "module",
       source: code,
     };
